@@ -1,13 +1,13 @@
-# CRI Scrape
-CRI Scrape is a tool for get general info about Italian Red Cross Courses
+<h1 align="center">CRI Scrape</h1>
+<p align="center">CRI Scrape is a tool for get general info about Italian Red Cross Courses<br><br><img src=https://img.shields.io/github/issues/Block2Paz/CRI-Scrape> <img src=https://img.shields.io/github/license/Block2Paz/CRI-Scrape> <img src=https://img.shields.io/github/stars/Block2Paz/CRI-Scrape></p>
 
-# Disclaimer
+## Disclaimer
 This code is only for educational purpose. So i'am not responsible for any illegal use of this code.
 
-# Problems / Questions
+## Problems / Questions
 For any problem or for asking anything write me at serpt@vcardone.it
 
-# Requirements and Installation
+## Requirements and Installation
 #### Requirements
 * **[Python 3.6 or higher](https://www.python.org/downloads/)**
 #### Installation and Use
@@ -24,5 +24,5 @@ pip install -r requirements.txt
 python CRIScrape.py
 ```
 
-# Screenshot
+## Screenshot
 ![Screenshot](https://i.imgur.com/53BR0QV.jpg)

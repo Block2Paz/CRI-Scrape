@@ -75,6 +75,8 @@ def main():
 
             res = client.post(urlgn, data=payload, headers=headers)
 
+            print("\nStarting...\n")
+
             while int(startid) <= int(endid):
                 urlcrse = 'https://gaia.cri.it/aspirante/corso-base/' + str(startid)
                 res = client.get(urlcrse, headers=dict(referer=urlgn))
@@ -87,20 +89,44 @@ def main():
                 snamec = page.xpath("/html/body/div[2]/div[2]/div[3]/h4[1]/text()")
                 sstart = page.xpath("/html/body/div[2]/div[2]/div[3]/div[3]/div[3]/div/div[2]/text()")
                 send = page.xpath("/html/body/div[2]/div[2]/div[3]/div[3]/div[4]/div/div[2]/text()")
+                sstato = page.xpath("/html/body/div[2]/div[2]/div[3]/h4[2]/text()")
 
                 if select == "2" and scomitato:
                     for i in range(38):
                         if scomitato[0] == comsicilia[i]:
                             print(Fore.GREEN + "[SUCCESS] SICILIA " + str(startid) + " " + snamec[0] + Fore.RESET)
-                            f = open("Sicilia/corsi.txt", "a")
-                            f.write("ID: " + str(startid) + " | Titolo: " + snamec[0] + " | Inizio: " + sstart[0] + " | Fine: " + send[0] + "\n")
-                            f.close()
+                            if sstato[2].strip() == "Annullato" or sstato[2].strip() == "Terminato" or sstato[3].strip() == "Annullato" or sstato[3].strip() == "Terminato":
+                                f = open("Sicilia/corsi_non_attivi.txt", "a")
+                                f.write("ID: " + str(startid) + " | Titolo: " + snamec[0] + " | Inizio: " + sstart[0] + " | Fine: " + send[0] + "\n")
+                                f.close()
+                            elif sstato[2].strip() == "In preparazione" or sstato[3].strip() == "In preparazione":
+                                f = open("Sicilia/corsi_attivi.txt", "a")
+                                f.write("ID: " + str(startid) + " | Titolo: " + snamec[0] + " | Inizio: " + sstart[0] + " | Fine: " + send[0] + "\n")
+                                f.close()
+                            elif sstato[2].strip() == "Attivo" or sstato[3].strip() == "Attivo":
+                                f = open("Sicilia/corsi_attivi.txt", "a")
+                                f.write("ID: " + str(startid) + " | Titolo: " + snamec[0] + " | Inizio: " + sstart[0] + " | Fine: " + send[0] + "\n")
+                                f.close()
+                            else:
+                                print(Fore.RED + "[ERROR] " + str(startid) + " - Open issue on github!" + Fore.RESET)
+
                             break
                 elif scomitato:
                     print(Fore.GREEN + "[SUCCESS] " + str(startid) + " " + snamec[0] + Fore.RESET)
-                    f = open("Italia/corsi.txt", "a")
-                    f.write("ID: " + str(startid) + " | Titolo: " + snamec[0] + " | Inizio: " + sstart[0] + " | Fine: " + send[0] + "\n")
-                    f.close()
+                    if sstato[2].strip() == "Annullato" or sstato[2].strip() == "Terminato" or sstato[3].strip() == "Annullato" or sstato[3].strip() == "Terminato":
+                        f = open("Italia/corsi_non_attivi.txt", "a")
+                        f.write("ID: " + str(startid) + " | Titolo: " + snamec[0] + " | Inizio: " + sstart[0] + " | Fine: " + send[0] + "\n")
+                        f.close()
+                    elif sstato[2].strip() == "In preparazione" or sstato[3].strip() == "In preparazione":
+                        f = open("Italia/corsi_attivi.txt", "a")
+                        f.write("ID: " + str(startid) + " | Titolo: " + snamec[0] + " | Inizio: " + sstart[0] + " | Fine: " + send[0] + "\n")
+                        f.close()
+                    elif sstato[2].strip() == "Attivo" or sstato[3].strip() == "Attivo":
+                        f = open("Italia/corsi_attivi.txt", "a")
+                        f.write("ID: " + str(startid) + " | Titolo: " + snamec[0] + " | Inizio: " + sstart[0] + " | Fine: " + send[0] + "\n")
+                        f.close()
+                    else:
+                        print(Fore.RED + "[ERROR] " + str(startid) + " - Open issue on github!" + Fore.RESET)
                 else:
                     print(Fore.RED + "[ERROR] " + str(startid) + " - Accesso Negato!" + Fore.RESET)
 
