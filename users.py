@@ -1,6 +1,7 @@
 """
 This work is licensed under a GNU General Public License v3.0 License.
-Discord: Block2Paz#4884 | Website: vcardone.it | Email: serpt@vcardone.it
+Discord: Block2Paz#4884 | Website: vcardone.it | Email: criscrape@vcardone.it
+This code is only for educational purpose. So I'm not responsible for any illegal use of this code.
 """
 
 import configparser

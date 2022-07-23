@@ -5,7 +5,7 @@
 This code is only for educational purpose. So i'am not responsible for any illegal use of this code.
 
 ## Problems / Questions
-For any problem or for asking anything write me at serpt@vcardone.it
+For any problem or for asking anything write me at criscrape@vcardone.it
 
 ## Requirements and Installation
 #### Requirements
@@ -25,4 +25,4 @@ python CRIScrape.py
 ```
 
 ## Screenshot
-![Screenshot](https://i.imgur.com/53BR0QV.jpg)
+![Screenshot](https://i.imgur.com/IBsbGZp.png)

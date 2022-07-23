@@ -1,6 +1,7 @@
 """
 This work is licensed under a GNU General Public License v3.0 License.
-Discord: Block2Paz#4884 | Website: vcardone.it | Email: serpt@vcardone.it
+Discord: Block2Paz#4884 | Website: vcardone.it | Email: criscrape@vcardone.it
+This code is only for educational purpose. So I'm not responsible for any illegal use of this code.
 """
 
 import configparser
@@ -73,38 +74,50 @@ def crsi(select):
             for i in range(38):
                 if scomitato[0] == comsicilia[i]:
                     printy("SUCCESS SICILY | " + str(startid) + " " + snamec[0], "n")
-                    if sstato[2].strip() == "Annullato" or sstato[2].strip() == "Terminato" or sstato[3].strip() == "Annullato" or sstato[3].strip() == "Terminato":
-                        f = open("Courses/Sicily/inactive_courses.txt", "a")
+                    try:
+                        if sstato[2].strip() == "Annullato" or sstato[2].strip() == "Terminato" or sstato[3].strip() == "Annullato" or sstato[3].strip() == "Terminato":
+                            f = open("Courses/Sicily/inactive_courses.txt", "a")
+                            f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + " | URL: https://gaia.cri.it/aspirante/corso-base/" + str(startid) + "\n")
+                            f.close()
+                        elif sstato[2].strip() == "In preparazione" or sstato[3].strip() == "In preparazione":
+                            f = open("Courses/Sicily/active_courses.txt", "a")
+                            f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + " | URL: https://gaia.cri.it/aspirante/corso-base/" + str(startid) + "\n")
+                            f.close()
+                        elif sstato[2].strip() == "Attivo" or sstato[3].strip() == "Attivo":
+                            f = open("Courses/Sicily/active_courses.txt", "a")
+                            f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + " | URL: https://gaia.cri.it/aspirante/corso-base/" + str(startid) + "\n")
+                            f.close()
+                        else:
+                            printy("ERROR - " + str(startid) + " - Open issue on github!", "r")
+                    except IndexError:
+                        printy("ERROR - " + str(startid) + " - Courses/Errors/error_courses.txt", "r")
+                        f = open("Courses/Errors/error_courses.txt", "a")
                         f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + "\n")
                         f.close()
-                    elif sstato[2].strip() == "In preparazione" or sstato[3].strip() == "In preparazione":
-                        f = open("Courses/Sicily/active_courses.txt", "a")
-                        f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + "\n")
-                        f.close()
-                    elif sstato[2].strip() == "Attivo" or sstato[3].strip() == "Attivo":
-                        f = open("Courses/Sicily/active_courses.txt", "a")
-                        f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + "\n")
-                        f.close()
-                    else:
-                        printy("ERROR - " + str(startid) + " - Open issue on github!", "r")
 
                     break
         elif scomitato:
             printy("SUCCESS | " + str(startid) + " " + snamec[0], "n")
-            if sstato[2].strip() == "Annullato" or sstato[2].strip() == "Terminato" or sstato[3].strip() == "Annullato" or sstato[3].strip() == "Terminato":
-                f = open("Courses/Italy/inactive_courses.txt", "a")
+            try:
+                if sstato[2].strip() == "Annullato" or sstato[2].strip() == "Terminato" or sstato[3].strip() == "Annullato" or sstato[3].strip() == "Terminato":
+                    f = open("Courses/Italy/inactive_courses.txt", "a")
+                    f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + " | URL: https://gaia.cri.it/aspirante/corso-base/" + str(startid) + "\n")
+                    f.close()
+                elif sstato[2].strip() == "In preparazione" or sstato[3].strip() == "In preparazione":
+                    f = open("Courses/Italy/active_courses.txt", "a")
+                    f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + " | URL: https://gaia.cri.it/aspirante/corso-base/" + str(startid) + "\n")
+                    f.close()
+                elif sstato[2].strip() == "Attivo" or sstato[3].strip() == "Attivo":
+                    f = open("Courses/Italy/active_courses.txt", "a")
+                    f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + " | URL: https://gaia.cri.it/aspirante/corso-base/" + str(startid) + "\n")
+                    f.close()
+                else:
+                    printy("ERROR - " + str(startid) + " - Open issue on github!", "r")
+            except IndexError:
+                printy("ERROR - " + str(startid) + " - Courses/Errors/error_courses.txt", "r")
+                f = open("Courses/Errors/error_courses.txt", "a")
                 f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + "\n")
                 f.close()
-            elif sstato[2].strip() == "In preparazione" or sstato[3].strip() == "In preparazione":
-                f = open("Courses/Italy/active_courses.txt", "a")
-                f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + "\n")
-                f.close()
-            elif sstato[2].strip() == "Attivo" or sstato[3].strip() == "Attivo":
-                f = open("Courses/Italy/active_courses.txt", "a")
-                f.write("ID: " + str(startid) + " | Title: " + snamec[0] + " | Start: " + sstart[0] + " | End: " + send[0] + "\n")
-                f.close()
-            else:
-                printy("ERROR - " + str(startid) + " - Open issue on github!", "r")
         else:
             printy("ERROR - " + str(startid) + " - Accesso Negato!", "r")
 
